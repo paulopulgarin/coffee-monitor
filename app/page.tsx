@@ -14,13 +14,15 @@ export default function Home() {
   const [selectedPlot, setSelectedPlot] = useState<string>('')
 
   useEffect(() => {
-    fetch('/api/plots')
-      .then(r => r.json())
-      .then(data => {
-        setPlots(data)
-        if (data.length) setSelectedPlot(data[0].id)
-      })
-  }, [])
+  fetch('/api/plots')
+    .then(r => r.json())
+    .then(data => {
+      const plotsArray = Array.isArray(data) ? data : []
+      setPlots(plotsArray)
+      if (plotsArray.length) setSelectedPlot(plotsArray[0].id)
+    })
+    .catch(err => console.error('Error fetching plots:', err))
+}, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-8">
