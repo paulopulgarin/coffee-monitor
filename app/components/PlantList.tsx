@@ -28,24 +28,25 @@ export default function PlantList({ plotId }: { plotId: string }) {
   if (loading) return <p className="text-center text-gray-500">Cargando...</p>
 
   return (
-  <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-    <h3 className="text-lg font-bold mb-4">Plantas Guardadas ({plants.length})</h3>
-    
-    {plants.length === 0 ? (
-      <p className="text-gray-500">No hay plantas registradas aún</p>
-    ) : (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-        {plants.map((plant) => (
-          <div key={plant.id} className="border p-2 rounded bg-gray-50 text-xs">
-            <div className="font-bold text-green-700">{plant.id_planta}</div>
-            <div className="text-gray-600">
-              <p>{plant.estado}</p>
-              <p>H: {plant.altura_cm || '-'} cm</p>
-              <p>D: {plant.diametro_mm || '-'} mm</p>
+    <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+      <h3 className="text-lg font-bold mb-4">Plantas Guardadas ({plants.length})</h3>
+      
+      {plants.length === 0 ? (
+        <p className="text-gray-500">No hay plantas registradas aún</p>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {plants.map((plant) => (
+            <div key={plant.id} className="border border-green-300 p-3 rounded-lg bg-green-50 text-black text-xs">
+              <p className="font-bold text-green-700 mb-1">{plant.id_planta}</p>
+              <p><span className="font-semibold">Estado:</span> {plant.estado}</p>
+              <p>Altura: {plant.altura_cm || '-'} cm</p>
+              <p>Diámetro: {plant.diametro_mm || '-'} mm</p>
+              <p className="text-gray-600 mt-1">({plant.lat.toFixed(3)}, {plant.lon.toFixed(3)})</p>
+              {plant.notas && <p className="text-gray-500 italic mt-1">"{plant.notas}"</p>}
             </div>
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-)
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
