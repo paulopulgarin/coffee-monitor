@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import PlantList from './components/PlantList'
 
 const PlantForm = dynamic(() => import('./components/PlantForm'), { ssr: false })
 
@@ -50,6 +51,7 @@ export default function Home() {
 
         {selectedPlot && <PlantForm plotId={selectedPlot} />}
       </div>
+      {selectedPlot && <PlantList plotId={selectedPlot} />}
     </div>
   )
 }
