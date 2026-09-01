@@ -68,7 +68,7 @@ export default function PlantForm({ plotId }: { plotId: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
+    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4 text-black">
       <h3 className="text-lg font-bold">Registrar Planta</h3>
       
       <input type="text" name="id_planta" placeholder="ID Planta (P001)" value={form.id_planta} onChange={handleChange} required className="w-full border p-2 rounded" />
