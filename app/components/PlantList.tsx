@@ -36,19 +36,31 @@ export default function PlantList({ plotId }: { plotId: string }) {
       ) : (
         <div className="flex gap-3 overflow-x-auto pb-2">
           {plants.map((plant) => (
-            <div key={plant.id} className="border p-3 rounded bg-gray-50 flex-shrink-0 w-48">
-              <div className="font-bold text-green-700">{plant.id_planta}</div>
-              <div className="text-sm text-gray-600">
-                <p>Estado: <span className="font-semibold">{plant.estado}</span></p>
-                <p>Altura: {plant.altura_cm || '-'} cm | Diámetro: {plant.diametro_mm || '-'} mm</p>
-                <p>Coords: {plant.lat.toFixed(4)}, {plant.lon.toFixed(4)}</p>
-                {plant.notas && <p>Notas: {plant.notas}</p>}
-                {plant.fecha_observacion && <p className="text-xs text-gray-400">Fecha: {plant.fecha_observacion}</p>}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
+            <div className="overflow-x-auto">
+  <table className="w-full text-sm border-collapse">
+    <thead>
+      <tr className="bg-green-100">
+        <th className="border p-2 text-left">ID</th>
+        <th className="border p-2 text-left">Estado</th>
+        <th className="border p-2">Altura</th>
+        <th className="border p-2">Diámetro</th>
+        <th className="border p-2">Lat</th>
+        <th className="border p-2">Lon</th>
+        <th className="border p-2 text-left">Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      {plants.map((plant) => (
+        <tr key={plant.id} className="border-b hover:bg-gray-50">
+          <td className="border p-2 font-bold text-green-700">{plant.id_planta}</td>
+          <td className="border p-2">{plant.estado}</td>
+          <td className="border p-2 text-center">{plant.altura_cm || '-'}</td>
+          <td className="border p-2 text-center">{plant.diametro_mm || '-'}</td>
+          <td className="border p-2 text-center text-xs">{plant.lat.toFixed(4)}</td>
+          <td className="border p-2 text-center text-xs">{plant.lon.toFixed(4)}</td>
+          <td className="border p-2 text-xs">{plant.notas || '-'}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
