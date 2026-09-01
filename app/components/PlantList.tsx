@@ -34,9 +34,9 @@ export default function PlantList({ plotId }: { plotId: string }) {
       {plants.length === 0 ? (
         <p className="text-gray-500">No hay plantas registradas aún</p>
       ) : (
-        <div className="space-y-3 max-h-96 overflow-y-auto">
+        <div className="flex gap-3 overflow-x-auto pb-2">
           {plants.map((plant) => (
-            <div key={plant.id} className="border p-3 rounded bg-gray-50">
+            <div key={plant.id} className="border p-3 rounded bg-gray-50 flex-shrink-0 w-48">
               <div className="font-bold text-green-700">{plant.id_planta}</div>
               <div className="text-sm text-gray-600">
                 <p>Estado: <span className="font-semibold">{plant.estado}</span></p>
